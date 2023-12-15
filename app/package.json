@@ -2,8 +2,11 @@
   "name": "express-test",
   "version": "1.0.0",
   "main": "./bin/www.js",
+  "bin": {
+    "express-test": "www.js"
+  },
   "scripts": {
-    "start": "nodemon app"
+    "start": "nodemon ./bin/www.js"
   },
   "author": "",
   "license": "MIT",
@@ -15,5 +18,6 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
+  "keywords": [],
   "description": ""
 }
