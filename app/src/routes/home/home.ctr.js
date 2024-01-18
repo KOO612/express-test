@@ -1,7 +1,5 @@
-const users = {
-  id: ['qwer', '나개발', '김팀장'],
-  pass: ['1234', '1234', 'qwer'],
-};
+const User = require('../../models/User');
+const UserStorage = require('../../models/UserStorage');
 
 const output = {
   home: (req, res) => {
@@ -14,21 +12,25 @@ const output = {
 
 const process = {
   login: (req, res) => {
-    const id = req.body.id,
-      pass = req.body.pass;
+    const user = new User(req.body);
+    const response = user.login();
+    return res.json(response);
+    // const id = req.body.id,
+    //   pass = req.body.pass;
 
-    if (users.id.includes(id)) {
-      const idx = users.id.indexOf(id);
-      if (users.pass[idx] === pass) {
-        return res.json({
-          success: true,
-        });
-      }
-    }
-    return res.json({
-      success: false,
-      msg: '로그인 실패',
-    });
+    // const users = UserStorage.getUsers('id', 'pass', 'name');
+    // const response = {};
+    // if (users.id.includes(id)) {
+    //   const idx = users.id.indexOf(id);
+    //   if (users.pass[idx] === pass) {
+    //     response.success = true;
+    //     return res.json(response);
+    //   }
+    // }
+
+    // response.success = false;
+    // response.msg = '로그인 실패';
+    // return res.json(response);
   },
 };
 
